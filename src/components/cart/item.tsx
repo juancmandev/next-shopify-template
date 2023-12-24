@@ -16,8 +16,11 @@ export default function CartItem(props: CartItem) {
         />
       </section>
       <section>
-        <h3 className='text-xl font-semibold'>
-          {props.merchandise.product.title}
+        <h3
+          title={props.merchandise.product.title}
+          className='text-xl font-semibold line-clamp-1'
+        >
+          {props.merchandise.product.title} asd asdsd asdasd
         </h3>
       </section>
       <section className='flex gap-2'>

@@ -1,20 +1,19 @@
 'use client';
 
 import { ShoppingCart } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { addItem } from './actions';
 import { useFormState, useFormStatus } from 'react-dom';
 import { useSearchParams } from 'next/navigation';
 import { ProductVariant } from '@/lib/shopify/types';
+import { Button } from '@/components/ui/button';
 import LoadingDots from '@/components/loading-dots';
 
-function SubmitButton({
-  availableForSale,
-  selectedVariantId,
-}: {
+type TSubmitButton = {
   availableForSale: boolean;
   selectedVariantId: string | undefined;
-}) {
+};
+
+function SubmitButton({ availableForSale, selectedVariantId }: TSubmitButton) {
   const { pending } = useFormStatus();
 
   if (!availableForSale) {
@@ -57,13 +56,12 @@ function SubmitButton({
   );
 }
 
-export default function AddToCart({
-  variants,
-  availableForSale,
-}: {
+type TAddToCart = {
   variants: ProductVariant[];
   availableForSale: boolean;
-}) {
+};
+
+export default function AddToCart({ variants, availableForSale }: TAddToCart) {
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;

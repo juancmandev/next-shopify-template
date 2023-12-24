@@ -16,9 +16,10 @@ export default function ProductCard(props: Product) {
       <CardHeader>
         <CardTitle>{props.title}</CardTitle>
         <Image
+          className='m-0'
           src={props.images[0].url}
-          width={280}
-          height={280}
+          width={200}
+          height={200}
           alt={props.title}
         />
       </CardHeader>

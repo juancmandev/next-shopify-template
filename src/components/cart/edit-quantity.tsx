@@ -1,14 +1,17 @@
 'use client';
 
 import { Minus, Plus } from 'lucide-react';
-import clsx from 'clsx';
 import { updateItemQuantity } from '@/components/cart/actions';
 import LoadingDots from '@/components/loading-dots';
 import type { CartItem } from '@/lib/shopify/types';
 import { useFormState, useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/button';
 
-function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
+type TSubmitButton = {
+  type: 'plus' | 'minus';
+};
+
+function SubmitButton({ type }: TSubmitButton) {
   const { pending } = useFormStatus();
 
   return (
@@ -36,13 +39,15 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
   );
 }
 
+type TEditItemQuantityButton = {
+  item: CartItem;
+  type: 'plus' | 'minus';
+};
+
 export function EditItemQuantityButton({
   item,
   type,
-}: {
-  item: CartItem;
-  type: 'plus' | 'minus';
-}) {
+}: TEditItemQuantityButton) {
   const [message, formAction] = useFormState(updateItemQuantity, null);
   const payload = {
     lineId: item.id,
