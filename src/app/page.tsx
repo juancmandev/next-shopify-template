@@ -1,8 +1,11 @@
 import ProductCard from '@/components/product-card';
-import { getCollectionProducts } from '@/lib/shopify';
+import { getCollectionProducts, getCollections } from '@/lib/shopify';
 
 export default async function Home() {
-  const products = await getCollectionProducts({ collection: 'frontpage' });
+  const collections = await getCollections();
+  const products = await getCollectionProducts({
+    collection: collections[1].handle,
+  });
 
   return (
     <>

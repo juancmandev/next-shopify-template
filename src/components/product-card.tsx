@@ -9,19 +9,30 @@ import {
 import { Product } from '@/lib/shopify/types';
 import Image from 'next/image';
 import AddToCartButton from './cart/add-to-cart';
+import Link from 'next/link';
+import { Button } from './ui/button';
 
 export default function ProductCard(props: Product) {
   return (
     <Card className='max-w-[280px]'>
       <CardHeader>
-        <CardTitle>{props.title}</CardTitle>
-        <Image
-          className='m-0'
-          src={props.images[0].url}
-          width={200}
-          height={200}
-          alt={props.title}
-        />
+        <Button
+          asChild
+          variant='link'
+          size={null}
+          className='w-full flex flex-col items-start'
+        >
+          <Link href={`/product/${props.handle}`}>
+            <CardTitle>{props.title}</CardTitle>
+            <Image
+              className='w-full'
+              src={props.images[0].url}
+              width={200}
+              height={200}
+              alt={props.title}
+            />
+          </Link>
+        </Button>
       </CardHeader>
       <CardContent>
         <CardDescription className='line-clamp-4'>

@@ -20,7 +20,7 @@ export default function CartItem(props: CartItem) {
           title={props.merchandise.product.title}
           className='text-xl font-semibold line-clamp-1'
         >
-          {props.merchandise.product.title} asd asdsd asdasd
+          {props.merchandise.product.title}
         </h3>
       </section>
       <section className='flex gap-2'>
